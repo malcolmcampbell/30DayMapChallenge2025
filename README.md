@@ -16,4 +16,4 @@ Happy mapping
 
 Prof C. (Malcolm)
 
-![30dmc_2025]([https://github.com/user-attachments/assets/b9d414b5-3463-4daa-966a-a4ebf8f4f377](https://raw.githubusercontent.com/tjukanovt/30DayMapChallenge/main/images/flyers/30dmc_2025.png))
+![30dmc_2025](https://raw.githubusercontent.com/tjukanovt/30DayMapChallenge/main/images/flyers/30dmc_2025.png)
