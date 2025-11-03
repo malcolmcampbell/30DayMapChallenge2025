@@ -8,7 +8,7 @@ The idea is to create (and publish) maps based on different themes on each day o
 
 from https://github.com/tjukanovt/30DayMapChallenge
 
-Again, trying to keep the repository of files, code and data to help teach (potential future) scholars and students about spatial in R Studio {sf, ggplot2, tmap, mapgl ...etc}
+Again, trying to keep the repository of files, code and data to help teach (potential future) scholars and students about spatial in R Studio {sf, ggplot2, tmap, leaflet, mapgl ...etc}
 
 See the RCode folder for each R script file, the data file for data you may need and the Maps folder for images.
 
