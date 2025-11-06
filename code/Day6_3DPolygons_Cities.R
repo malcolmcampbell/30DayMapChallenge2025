@@ -1,5 +1,8 @@
-library(mapgl)
-library(tmaptools)
+# 30 Day Map challenge 2025. # copyright Malcolm Campbell, November 2025
+# Day 6 Dimensions 	Map beyond 2D. Visualize data using 3D models, 
+#extrusions (building heights), 
+#depth, time (as a dimension), or an unconventional multivariate approach.
+pacman::p_load(mapgl, tmaptools)
 
 NZCities <- c("Auckland, New Zealand", 
               "Wellington, New Zealand", 
@@ -114,13 +117,16 @@ Cities <- c("London, United Kingdom",
             # add your own place there with city and country?
               "Dublin, Ireland", 
             "Belfast, United Kingdom",
-              "Toronto, Canada")
+              "Toronto, Canada",
+            "Montreal, Canada")
 CitiesDF <- geocode_OSM(Cities)
 CitiesDF
 ###############################################################################
 # PLACE - replace 1,3 and 1,2 with row of DF you will use
-maplibre(style = maptiler_style("basic"),center = c(CitiesDF [1,3], CitiesDF [1,2]),
-  zoom = 15.5,   pitch = 75,   bearing = 180) |>
+# e.g. CitiesDF [1,3], CitiesDF [1,2] OR CitiesDF [2,3], CitiesDF [2,2] OR
+# CitiesDF [3,3], CitiesDF [3,2]  OR CitiesDF [4,3], CitiesDF [4,2]
+maplibre(style = maptiler_style("basic"),center = c(CitiesDF [5,3], CitiesDF [5,2]),
+  zoom = 16,   pitch = 85,   bearing = 180) |>
   add_vector_source(id = "openmaptiles",
     url = paste0("https://api.maptiler.com/tiles/v3/tiles.json?key=",
                  Sys.getenv("MAPTILER_API_KEY"))  ) |>
