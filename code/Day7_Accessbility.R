@@ -11,34 +11,17 @@
 # Professor Malcolm Campbell
 # Attribution-Non Commercial-ShareAlike  # CC BY-NC-SA 
 pacman::p_load(mapboxapi, mapgl, leaflet, mapview)
-# If you dont already go to https://mapbox.co and set up an API / token
-# The `mb_access_token()` 
+# If you dont already go to https://mapbox.co and set up an API / token. The `mb_access_token()` 
 # function sets the access token for all subsequent Mapbox API calls in 
 # both the mapboxapi and mapgl packages.
-# mb_access_token ("copy and paste the API token TEXT HERE between the speech marks")
-
-
-########################################
-# setting up a custom ICON 
-icons <- awesomeIcons(
-  icon = "ambulance",
-  library = "fa",
-  markerColor = 'lightblue')
-########################################
+# mb_access_token ("copy and paste the API token TEXT HERE between the speech marks") - BUT DONT SHARE PUBLICALLY!!
 
 # geocode to an SF object using mapbox
-# note - wont work without API setup
+#
+# note - will not work without API setup
+#
 RVH <- mb_geocode("Royal Victoria Hospital, 274 Grosvenor Road, Belfast, BT12 6BA", 
                   output = "sf") # adds the geocoded coords to an SF object
-# standard isochrone - time agnostic
-isos_RVH <- mb_isochrone(
-  location = "Royal Victoria Hospital, 274 Grosvenor Road, Belfast, BT12 6BA",
-  profile = "driving",
-  time = c(1:30)
-)
-
-
-
 
 # Generate isochrones for middle of the night where there is the least traffic
 # #3AM
@@ -74,27 +57,24 @@ night_map <-  mapboxgl(bounds = iso_night) |>
     fill_color = match_expr(
       column = "time",
       values = c(5, 10, 15),
-      stops = c("lightblue", "blue", "darkblue")
-    ),
+      stops = c("lightgreen", "green", "darkgreen")    ),
     fill_opacity = 0.35  ) |>
   add_markers( data = RVH  )
 night_map
 
 
 compare(rush_map, night_map, swiper_color = "grey30") |>
-  add_legend(
-    "Royal Victoria Hospital (5PM vs. 3AM) Accessibility",
-    values = c("5 minutes", "10 minutes", "15 minutes"),
-    colors = c("lightblue", "blue", "darkblue"),
+  add_legend(  "Royal Victoria Hospital, 5PM vs. 3AM",
+    values = c("5 minutes (Day)", "10 minutes (Day)", "15 minutes (Day)", 
+               "5 minutes (Night)", "10 minutes (Night)", "15 minutes (Night)"),
+    colors = c("lightblue", "blue", "darkblue", 
+               "lightgreen", "green", "darkgreen"),
     patch_shape = iso_night[1,],
     type = "categorical",
-    style = legend_style(background_opacity = 0.7)
-  )
+    style = legend_style(background_opacity = 0.7)  )
 
-
-#######################3
+##############################################################################
 # MIDDLEMORE
-
 # geocode to an SF object using mapbox
 # note - wont work without API setup
 MIDDLEMORE <- mb_geocode("Middlemore Hospital, Hospital Road, Ōtāhuhu, Auckland", 
@@ -134,8 +114,7 @@ night_map <-  mapboxgl(bounds = iso_night) |>
     fill_color = match_expr(
       column = "time",
       values = c(5, 10, 15),
-      stops = c("lightblue", "blue", "darkblue")
-    ),
+      stops = c("lightgreen", "green", "darkgreen") ),
     fill_opacity = 0.35  ) |>
   add_markers( data = MIDDLEMORE  )
 night_map
@@ -150,7 +129,5 @@ compare(rush_map, night_map, swiper_color = "grey30") |>
     type = "categorical",
     style = legend_style(background_opacity = 0.7)
   )
-
-
 ##########################################################################
 #END
