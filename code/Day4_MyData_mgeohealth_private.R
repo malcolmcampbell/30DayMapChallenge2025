@@ -20,7 +20,7 @@ colvar <- "green"
 colvar <- "yellow"
 
 # PRIVATE DATA LOADED - NOT TO SHARE
-setwd("C:/Users/mhc57/OneDrive - University of Canterbury/Research/mGeoHealth/geojson/geojson/monthly/activities/")
+setwd(".data/activities/")
 # geojson activity data
 AC2016 <- geojson_read("activities.geojson")
 
